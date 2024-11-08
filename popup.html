@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Timer Extension</title>
+</head>
+<body>
+  <div class="container">
+    <div class="timer" aria-live="assertive">
+      <span id="minutes">00</span>:<span id="seconds">00</span>
+    </div>
+    <div class="controls">
+      <div class="time-buttons">
+        <button data-time="10" aria-label="Set timer for 10 minutes">10 min</button>
+        <button data-time="30" aria-label="Set timer for 30 minutes">30 min</button>
+        <button data-time="60" aria-label="Set timer for 60 minutes">60 min</button>
+      </div>
+      <input type="number" id="custom-time" placeholder="Enter a time in minutes" class="custom-time-input" min="1" max="1440" title="Enter time between 1 and 1440 minutes (24 hours)">
+      <div class="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
