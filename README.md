@@ -29,7 +29,7 @@ A Chrome extension for managing countdown timers with a clean, modern interface.
 
 - JavaScript, HTML, CSS
 - Chrome Extension Manifest V3
-- Chrome APIs: storage, notifications, alarms
+- Chrome APIs: storage, notifications, alarms, contextMenus
 
 ## Files
 
