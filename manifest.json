@@ -3,7 +3,7 @@
     "name": "Timer Extension",
     "version": "1.0",
     "description": "A simple timer extension",
-    "permissions": ["alarms", "storage", "notifications", "contextMenus"],
+    "permissions": ["alarms", "storage", "notifications"],
     "host_permissions": ["<all_urls>"],
     "background": {
       "service_worker": "background.js"
