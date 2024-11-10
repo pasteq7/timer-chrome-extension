@@ -11,7 +11,6 @@ A Chrome extension for managing countdown timers with a clean, modern interface.
 - Desktop notifications
 - Timer persists across sessions
 - Badge shows remaining time
-- Toggle 1-minute warning notifications on/off
 
 ## Installation
 
