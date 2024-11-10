@@ -1,6 +1,5 @@
 let timer = null;
 let remainingSeconds = 0;
-let warningNotificationsEnabled = true;
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'startTimer') {
@@ -15,34 +14,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     });
   }
   return true; 
-});
-
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    id: 'toggleWarning',
-    title: 'Disable 1-minute warning',
-    contexts: ['action']
-  });
-
-  // Load saved notification preference
-  chrome.storage.local.get(['warningNotificationsEnabled'], (result) => {
-    warningNotificationsEnabled = result.warningNotificationsEnabled ?? true;
-    updateContextMenuTitle();
-  });
-});
-
-function updateContextMenuTitle() {
-  chrome.contextMenus.update('toggleWarning', {
-    title: `${warningNotificationsEnabled ? 'Disable' : 'Enable'} 1-minute warning`
-  });
-}
-
-chrome.contextMenus.onClicked.addListener((info) => {
-  if (info.menuItemId === 'toggleWarning') {
-    warningNotificationsEnabled = !warningNotificationsEnabled;
-    updateContextMenuTitle();
-    chrome.storage.local.set({ warningNotificationsEnabled });
-  }
 });
 
 function startTimer(duration) {
@@ -120,8 +91,6 @@ function showNotification() {
 }
 
 function showWarningNotification() {
-  if (!warningNotificationsEnabled) return;
-  
   const options = {
     type: 'basic',
     iconUrl: 'icon128.png',
@@ -149,4 +118,8 @@ chrome.storage.local.get(['minutes', 'seconds', 'isRunning'], (result) => {
   if (result.isRunning) {
     startTimer(result.minutes + result.seconds / 60);
   }
+});
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.remove(['warningNotificationsEnabled']);
 });
