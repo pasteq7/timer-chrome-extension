@@ -42,10 +42,6 @@ function updateTimer() {
     updateBadge(minutes);
     updatePopup(minutes, seconds);
     saveState();
-    
-    if (remainingSeconds === 60) {
-      showWarningNotification();
-    }
   } else {
     console.log('Timer reached zero, stopping and showing notification');
     stopTimer();
@@ -88,17 +84,6 @@ function showNotification() {
       console.log('Notification created with ID:', notificationId);
     }
   });
-}
-
-function showWarningNotification() {
-  const options = {
-    type: 'basic',
-    iconUrl: 'icon128.png',
-    title: 'One Minute Remaining',
-    message: 'Your timer will complete in one minute!',
-    priority: 1
-  };
-  chrome.notifications.create(options);
 }
 
 function focusBrowserWindow(window) {
